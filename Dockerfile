@@ -12,10 +12,10 @@ RUN dpkg-reconfigure --frontend noninteractive tzdata
 # Update the base to a starting state.
 RUN apt-get update
 RUN apt-get -y install software-properties-common curl git
-RUN add-apt-repository ppa:saltstack/salt
-RUN apt-get update
 
 # Install saltstack.
+RUN add-apt-repository ppa:saltstack/salt
+RUN apt-get update
 RUN apt-get -y install salt-minion python-apt
 ADD configs/minion /etc/salt/minion
 RUN service salt-minion restart
