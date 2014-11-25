@@ -1,2 +1,2 @@
 #!/bin/bash
-docker build -t 89n/salt-masterless-ubuntu . 
+docker build -t manageflitter/salt-masterless-ubuntu . 
