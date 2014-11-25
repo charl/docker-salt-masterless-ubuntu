@@ -1,2 +1,2 @@
 #!/bin/bash
-docker build -t enonic/salt-masterless-ubuntu . 
+docker build -t 89n/salt-masterless-ubuntu . 

@@ -1,26 +1,25 @@
-# Generic salts masterless minion
+# Generic 89n salt masterless minion.
 
-# Base image
-FROM ubuntu:latest
+# Base image.
+FROM ubuntu:14.04
 
-MAINTAINER Erik Kaareng-Sunde esu@enonic.com
+MAINTAINER Charl Matthee charl@89n.com
 
-
-
-
-
-# Set timezone to Europe/Oslo
+# Set timezone to Etc/UTC.
 ADD configs/timezone /etc/timezone
 RUN dpkg-reconfigure --frontend noninteractive tzdata
 
-# Installing saltstack
-RUN apt-get update
-RUN apt-get -y install software-properties-common
+# Update the base to a starting state.
+RUN aptitude update
+RUN aptitude -y install software-properties-common curl git
 RUN add-apt-repository ppa:saltstack/salt
-RUN apt-get update
-RUN apt-get -y install salt-minion python-apt
-ADD configs/minion /etc/minion
+RUN aptitude update
 
-EXPOSE 8080
+# Install saltstack.
+RUN aptitude -y install salt-minion python-apt
+ADD configs/minion /etc/minion
+RUN service salt-minion restart
+
+EXPOSE 80
 
 CMD /bin/bash
