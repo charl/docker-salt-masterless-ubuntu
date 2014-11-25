@@ -17,7 +17,7 @@ RUN apt-get update
 
 # Install saltstack.
 RUN apt-get -y install salt-minion python-apt
-ADD configs/minion /etc/minion
+ADD configs/minion /etc/salt/minion
 RUN service salt-minion restart
 
 EXPOSE 80
